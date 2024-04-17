@@ -1,0 +1,23 @@
+<app-navbar [IsAdmin]="isAdmin"></app-navbar>
+<div class="continar">
+<div class="information">
+    <img src="../../assets/images/{{employees.imageOfEmployees}}" alt="">
+    <div>
+        <span>{{employees.firstNmae}} {{employees.lastName}}</span>
+        <span>Dep:  {{Department.depName}}</span>
+
+    </div>
+</div>
+<div class="detile">
+    <div>Phone:
+<a style="color: blue; cursor: pointer;">+1698418916</a></div>
+<div>
+    Adress:
+<span>Amman,Jordan</span>
+</div>
+<div>
+    Email:
+<a style="color: blue; cursor: pointer;">{{employees.email}}</a>
+</div>
+</div>
+</div>

@@ -1,0 +1,152 @@
+<app-navbar></app-navbar>
+<style>
+    :host {
+      color: #404e67;
+      background: #f5f7fa;
+      font-family: "Open Sans", sans-serif;
+    }
+    .table-wrapper {
+      width: 1200px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+    .table-title {
+      padding-bottom: 10px;
+      margin: 0 0 10px;
+    }
+    .table-title h2 {
+      margin: 6px 0 0;
+      font-size: 22px;
+    }
+    .table-title .add-new {
+      float: right;
+      height: 30px;
+      font-weight: bold;
+      font-size: 12px;
+      text-shadow: none;
+      min-width: 100px;
+      border-radius: 50px;
+      line-height: 13px;
+    }
+    .table-title .add-new i {
+      margin-right: 4px;
+    }
+    table.table {
+      table-layout: fixed;
+    }
+    table.table tr th,
+    table.table tr td {
+      border-color: #e9e9e9;
+    }
+    table.table th i {
+      font-size: 13px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+  
+    table.table th:last-child {
+      width: 100px;
+    }
+    table.table td a {
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 5px;
+      min-width: 24px;
+    }
+    table.table td a.add {
+      color: #27c46b;
+    }
+    table.table td a.edit {
+      color: #ffc107;
+    }
+    table.table td a.delete {
+      color: #e34724;
+    }
+    table.table td i {
+      font-size: 19px;
+    }
+    table.table td a.add i {
+      font-size: 24px;
+      margin-right: -1px;
+      position: relative;
+      top: 3px;
+    }
+    table.table .form-control {
+      height: 32px;
+      line-height: 32px;
+      box-shadow: none;
+      border-radius: 2px;
+    }
+    table.table .form-control.error {
+      border-color: #f50000;
+    }
+    table.table td .add {
+      display: none;
+    }
+    tbody tr td {
+      width: 150px;
+    }
+  </style>
+  <div class="container-lg">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-8">
+              <h2>Employee <b>Details</b></h2>
+            </div>
+            
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th></th>
+              <th>Dep Id</th>
+              <th>Dep Name</th>
+              <th>Max Number Of Employees</th>
+              <th>Dep Manger</th>
+              <th>number Of Employee</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dep of department; index as i">
+                <td><img style="width: 150px;" src="../../assets/images/{{dep.imageOfDepartment.trim()}}.jpg" alt=""></td>
+              <td>{{ dep.depId }}</td>
+              <td>{{ dep.depName }}</td>
+              <td>{{ dep.maxEmployees}}</td>
+              <td>{{ dep.depManger }} {{getManger(dep.depManger)}}</td>
+              <td>{{numberOfEmployees[i]}}</td>
+              <td>
+                <a (click)="update(dep.depId)"
+                  class="delete"
+                  title="Update"
+                  data-toggle="tooltip"
+                  ><i class="material-icons">Update</i></a
+                >
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="myForm" *ngIf="isUpdate" (ngSubmit)="updatedepartment()">
+    <div style="display:flex;justify-content: center;align-items: center; width: 100%;">
+      <tr>
+        <label>DepName</label>
+        <input type="text" formControlName="depName" />
+        <td><label>Max Employees</label> <input type="text" formControlName="maxEmployees"/></td>
+        <td><label>DepManger</label> <input type="email" formControlName="depManger"/></td>
+        <td><input type="submit" value="submit" /></td>
+  
+      </tr>
+      
+    </div>
+  </form>
+  

@@ -1,0 +1,46 @@
+.continar {
+    width: 100%;
+    height: 92vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.information {
+    width: 35%;
+    height: 400px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.information img {
+    width: 250px;
+}
+.information div {
+    width: 100%;
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.information div :nth-child(1){
+    font-size: 50px;
+}
+.information div :nth-child(2){
+    color: blue;
+}
+
+.detile {
+    display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 160px;
+border:1px solid rgba(0, 0, 0, 0.251);
+padding: 20px;
+}
+.detile div {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}

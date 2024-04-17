@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<form [formGroup]="myForm" (ngSubmit)="addNewEmployees(file.files)">
+  <div class="container">
+    <span>Employees Informations</span>
+    <div>
+      <label>firstName</label>
+      <input type="text" formControlName="firstNmae" />
+    </div>
+    <div>
+      <label>Last Name</label> <input type="text" formControlName="lastName" />
+    </div>
+    <div>
+      <div>
+        <label style="width: 100px;">select Department</label>
+         <select name="dep" formControlName="DepId">
+          <option   *ngFor="let dep of Department" value="{{dep.depName}}">{{dep.depName}}</option>
+        </select>
+      </div>
+      <!-- <label>Dep Id</label>
+      <input type="text" formControlName="DepId" /> -->
+    </div>
+    <div>
+      <label>Email</label> <input type="email" formControlName="Email" />
+    </div>
+    <div>
+      <label>password</label>
+      <input type="password" formControlName="password" />
+    </div>
+    <div>
+      <label>birth Of Data</label>
+      <input type="date" formControlName="birth_data" />
+    </div>
+
+    <div>
+      <label> select your gender</label>
+     male
+      <input
+        name="genders"
+        type="radio"
+        value="male"
+        formControlName="genders"
+      />
+      female
+      <input
+        name="genders"
+        type="radio"
+        value="female"
+        formControlName="genders"
+      />
+      <!-- <div *ngFor="let gender of genderss">
+        <input
+          type="radio"
+          name="gender"
+          [value]="gender.value"
+          formControlName="genders"
+        /> -->
+      <!-- <label>{{ gender.title }}</label> -->
+      <!-- </div> -->
+    </div>
+    <div>
+      <td>
+        <label>image</label
+        ><input
+          type="file"
+          (change)="onFileSelected($event)"
+          id="file"
+          #file
+          formControlName="pic"
+        />
+      </td>
+    </div>
+    <input class="submit" type="submit" value="submit" />
+  </div>
+</form>
